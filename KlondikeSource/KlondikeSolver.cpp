@@ -45,33 +45,33 @@ void swapVec(vector<string>& vec)
 	
 
 	vec[0] = newVec[0];
-	vec[1] = newVec[2];
-	vec[2] = newVec[5];
-	vec[3] = newVec[9];
-	vec[4] = newVec[14];
-	vec[5] = newVec[20];
-	vec[6] = newVec[27];
-	vec[7] = newVec[1];
-	vec[8] = newVec[4];
-	vec[9] = newVec[8];
-	vec[10] = newVec[13];
+	vec[1] = newVec[7];
+	vec[2] = newVec[1];
+	vec[3] = newVec[13];
+	vec[4] = newVec[8];
+	vec[5] = newVec[2];
+	vec[6] = newVec[18];
+	vec[7] = newVec[14];
+	vec[8] = newVec[9];
+	vec[9] = newVec[3];
+	vec[10] = newVec[22];
 	vec[11] = newVec[19];
-	vec[12] = newVec[26];
-	vec[13] = newVec[3];
-	vec[14] = newVec[7];
-	vec[15] = newVec[12];
-	vec[16] = newVec[18];
-	vec[17] = newVec[25];
-	vec[18] = newVec[6];
+	vec[12] = newVec[15];
+	vec[13] = newVec[10];
+	vec[14] = newVec[4];
+	vec[15] = newVec[25];
+	vec[16] = newVec[23];
+	vec[17] = newVec[20];
+	vec[18] = newVec[16];
 	vec[19] = newVec[11];
-	vec[20] = newVec[17];
-	vec[21] = newVec[24];
-	vec[22] = newVec[10];
-	vec[23] = newVec[16];
-	vec[24] = newVec[23];
-	vec[25] = newVec[15];
-	vec[26] = newVec[22];
-	vec[27] = newVec[21];
+	vec[20] = newVec[5];
+	vec[21] = newVec[27];
+	vec[22] = newVec[26];
+	vec[23] = newVec[24];
+	vec[24] = newVec[21];
+	vec[25] = newVec[17];
+	vec[26] = newVec[12];
+	vec[27] = newVec[6];
 }
 
 bool CheckAndMove(int index)
