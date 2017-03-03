@@ -92,7 +92,8 @@ namespace GenerateNewLevel
             }
 
 
-            ReArrangeFile();
+            // ReArrangeFile();
+            RemoveFile();
 
         }
 
@@ -146,6 +147,17 @@ namespace GenerateNewLevel
                 File.Move(arrangePath + "solitaire" + curIndex + ".txt", arrangePath + (i + 1) + ".txt");
                 Console.WriteLine(_fileIndexList[i]);
             }
+        }
+
+        public static void RemoveFile()
+        {
+            var st = File.ReadAllLines("Sol/rem.txt");
+            for(int i  = 0; i < st.Length; i ++)
+            {
+                var path = st[i]; 
+                File.Move(arrangePath  + path + ".txt", "Sol/remove/" + path + ".txt");
+            }
+           // ReArrangeFile();
         }
         
 
