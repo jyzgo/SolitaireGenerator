@@ -79,8 +79,8 @@ bool CheckAndMove(int index)
 	string line;
 	std::string::size_type sz;
 	//char* fileName = "";// initialized properly
-	//sprintf(fileName, "E:\\Sol\\original\\solitaire%d.txt", index);
-	string fileName = "E:\\Sol\\original\\solitaire" + to_string(index) + ".txt";
+	//sprintf(fileName, "Sol\\original\\solitaire%d.txt", index);
+	string fileName = "Sol\\original\\solitaire" + to_string(index) + ".txt";
 	ifstream myfile(fileName);
 	string curDec = "";
 	if (myfile.is_open())
@@ -351,22 +351,22 @@ bool CheckAndMove(int index)
 }
 void MoveSuccess(int index)
 {
-	string oldfileName = "E:\\Sol\\original\\solitaire" + to_string(index) + ".txt";
-	string newfileName = "E:\\Sol\\Winable\\solitaire" + to_string(index) + ".txt";
+	string oldfileName = "Sol\\original\\solitaire" + to_string(index) + ".txt";
+	string newfileName = "Sol\\Winable\\solitaire" + to_string(index) + ".txt";
 	rename(oldfileName.c_str(), newfileName.c_str());
 }
 
 void MoveFail(int index)
 {
-	string oldfileName = "E:\\Sol\\original\\solitaire" + to_string(index) + ".txt";
-	string newfileName = "E:\\Sol\\Unable\\solitaire" + to_string(index) + ".txt";
+	string oldfileName = "Sol\\original\\solitaire" + to_string(index) + ".txt";
+	string newfileName = "Sol\\Unable\\solitaire" + to_string(index) + ".txt";
 	rename(oldfileName.c_str(), newfileName.c_str());
 
 }
 
 bool FileExist(int index)
 {
-	string oldfileName = "E:\\Sol\\original\\solitaire" + to_string(index) + ".txt";
+	string oldfileName = "Sol\\original\\solitaire" + to_string(index) + ".txt";
 	if (std::ifstream(oldfileName))
 	{
 		return true;
@@ -383,6 +383,11 @@ int main(int argc, char * argv[]) {
 	//	sprintf(s, "You: %d CPU: %d", i, i);
 	//	ifstream m(s);
 	//}
+	//std::ofstream outfile("test.txt");
+
+	//outfile << "my text here!" << std::endl;
+
+	//outfile.close();
 
 	//return 0;
 	int success = 0;
