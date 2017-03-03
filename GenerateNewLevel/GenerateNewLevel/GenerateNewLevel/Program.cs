@@ -154,8 +154,15 @@ namespace GenerateNewLevel
             var st = File.ReadAllLines("Sol/rem.txt");
             for(int i  = 0; i < st.Length; i ++)
             {
-                var path = st[i]; 
-                File.Move(arrangePath  + path + ".txt", "Sol/remove/" + path + ".txt");
+                var path = st[i];
+                var oriPath = (arrangePath + path + ".txt");
+                if (File.Exists(oriPath))
+                {
+                    File.Move(oriPath, "Sol/remove/" + path + ".txt");
+                }else
+                {
+                    Console.WriteLine(oriPath + " File not exist");
+                }
             }
            // ReArrangeFile();
         }
