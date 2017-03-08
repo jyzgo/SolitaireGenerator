@@ -50,6 +50,7 @@ namespace GenerateNewLevel
             {
                 head28 += _oriList[i].ToString();
             }
+         
         }
         public string head28;
         HashSet<string> _set = new HashSet<string>();
@@ -81,19 +82,38 @@ namespace GenerateNewLevel
     {
         static void Main(string[] args)
         {
-            int count = 0;
-            for (int i = 0; i < args.Length; i++)
+            Console.WriteLine("-a = arreng  \n -g == genlevel \n -r == remove file");
+            if (args.Length > 0)
             {
-                var s = args[i];
-                if (s == "-num")
+                var ar = args[0];
+                if (ar == "-a")
                 {
-                    count = Convert.ToInt32( args[i + 1]);
+                    ReArrangeFile();
                 }
+                else if (ar == "-g")
+                {
+                    GenLevel();
+                }
+                else if (ar == "-r")
+                {
+                    RemoveFile();
+                }
+                else
+                {
+                    Console.WriteLine("arg wrong");
+                }
+            }
+            else
+            {
+                Console.WriteLine("plz input arg");
             }
 
 
+
+
             // ReArrangeFile();
-            RemoveFile();
+              //RemoveFile();
+            //GenLevel();
 
         }
 
@@ -102,7 +122,7 @@ namespace GenerateNewLevel
         {
             HashSet<string> _s = new HashSet<string>();
             HashSet<string> final = new HashSet<string>();
-            for (int i = 0; i < 200000; i++)
+            for (int i = 0; i < 10; i++)
             {
                 var newLv = new newLv();
                 if (_s.Contains(newLv.head28))
@@ -115,28 +135,33 @@ namespace GenerateNewLevel
 
 
 
-            Console.Write("dd count " + final.Count);
+            Console.Write("Distinguish count " + final.Count);
 
             int c = 0;
             foreach (var s in final)
             {
                 c++;
-                File.WriteAllText("Sol/original/solitaire" + c + ".txt", s);
+                File.WriteAllText("Sol/gen/solitaire" + c + ".txt", s);
             }
 
         }
 
         const string arrangePath = "Sol/arrange/";
+        const string arrangeOrigin = "Sol/arrangeOrigin/";
         public static void ReArrangeFile()
         {
-            string[] files =   Directory.GetFiles(arrangePath);
+            string[] files =   Directory.GetFiles(arrangeOrigin);
             List<int> _fileIndexList = new List<int>();
             for(int i  = 0; i < files.Length; i ++)
             {
                 var fileName = files[i];
-                var m = fileName.Remove(0, 21);
-                var d = Path.GetFileNameWithoutExtension(m);
-                _fileIndexList.Add(Convert.ToInt32(d)); 
+                Console.WriteLine("fi " + fileName);
+                var m = fileName.Remove(0, 27);
+                var d = Path.GetFileNameWithoutExtension(fileName);
+             
+                var k = d.Remove(0, 9);
+                Console.WriteLine("dd " + k);
+                _fileIndexList.Add(Convert.ToInt32(k)); 
                 Console.WriteLine("aa "  + d);
             }
 
@@ -144,21 +169,21 @@ namespace GenerateNewLevel
             for(int i  = 0; i < _fileIndexList.Count; i ++)
             {
                 int curIndex = _fileIndexList[i];
-                File.Move(arrangePath + "solitaire" + curIndex + ".txt", arrangePath + (i + 1) + ".txt");
+                File.Copy(arrangeOrigin + "solitaire" + curIndex + ".txt", arrangePath + "solitaire" + (i + 1) + ".txt");
                 Console.WriteLine(_fileIndexList[i]);
             }
         }
-
+        const string remPath = "Sol/remOrigin/";
         public static void RemoveFile()
         {
             var st = File.ReadAllLines("Sol/rem.txt");
             for(int i  = 0; i < st.Length; i ++)
             {
                 var path = st[i];
-                var oriPath = (arrangePath + path + ".txt");
+                var oriPath = (remPath + "solitaire" +  path + ".txt");
                 if (File.Exists(oriPath))
                 {
-                    File.Move(oriPath, "Sol/remove/" + path + ".txt");
+                    File.Move(oriPath, "Sol/remove/" + "solitaire" + path + ".txt");
                 }else
                 {
                     Console.WriteLine(oriPath + " File not exist");
